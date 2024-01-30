@@ -7,8 +7,8 @@
 	<ul>
 		<li v-for="post in posts" :key="post._path">
 			<NuxtLink :to="post._path" class="column hover:bg-gray-800">
-				<div :class="{'text-white dark: text-gray-900': !post.displayYear, 'text-gray-400 dark:text-gray-500': post.displayYear }">{{ post.year }}</div>
-				<div>{{ post.title }}</div>2
+				<div :class="{'text-white dark:text-gray-900': !post.displayYear, 'text-gray-400 dark:text-gray-500': post.displayYear }">{{ post.year }}</div>
+				<div>{{ post.title }}</div>
 			</NuxtLink>
 		</li>
 	</ul>
@@ -17,36 +17,47 @@
 </template>
 
 <script setup>
+const props = defineProps({
+	limit: {
+		type: Number,
+		default: null
+	}
+})
+
 const { data } = await useAsyncData(
 	'blog-list',
-	() => queryContent('/blog')
-	.where({ _path: { $ne: '/blog' }})
-	.only(['_path', 'title', 'publishedAt'])
-	.sort({ publishedAt: -1 })
-	.find()
+	() => {
+		const query = queryContent('/blog')
+			.where({ _path: { $ne: '/blog' } })
+			.only(['_path', 'title', 'publishedAt'])
+			.sort({ publishedAt: -1 });
+
+
+		if(props.limit) {
+			query.limit(props.limit)
+		}
+		return query.find();
+	}
 );
 
 const posts = computed(() => {
+	const result = [];
+
 	if(!data.value) {
 		result [''];
 	}
 
-	const result = [];
 	let lastYear = null;
 
 	for (const post of data.value) {
-		console.log(post);
 		const year = new Date(post.publishedAt).getFullYear();
-		console.log(year);
 
 		const displayYear = year !== lastYear;
 		post.displayYear = displayYear;
 		post.year = year;
-		console.log(displayYear);
 		result.push(post);
 		lastYear = year;
 	}
-
 
 	return result;
 })

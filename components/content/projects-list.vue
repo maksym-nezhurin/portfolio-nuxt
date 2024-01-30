@@ -1,10 +1,9 @@
 <template>
-	<div>
-		<p class="mb-10">Take a look at my prs</p>
+	<div class="not-prose">
 		<section v-if="pending">Loading...</section>
 		<section v-else-if="error">Something went wrong... Try again</section>
 		<section v-else>Here we display the data
-			<ul class="grid grdi-cols-1 gap-4">
+			<ul class="grid grid-cols-1 gap-4">
 				<li v-for="repository in repos" :key="repository.id"
 				class="border border-gray-200 rounded-sm p-4 hover:bg-gray-100 rounded-sm p-4">
 					<a :href="repository.html_url" target="_blank" class="flex justify-between text-sm">
@@ -22,10 +21,10 @@
 </template>
 
 <script setup>
-const { error, pending, data } = await useFetch('https://api.github.com/users/maksym-nezhurin/repos');
+	const { error, pending, data } = await useFetch('https://api.github.com/users/maksym-nezhurin/repos');
 
-const repos = computed(
-	() => data.value.filter((repo) => repo.description)
-	.sort((a, b) => b.stargazers_count - a.stargazers_count)
-)
+	const repos = computed(
+		() => data.value.filter((repo) => repo.description)
+		.sort((a, b) => b.stargazers_count - a.stargazers_count)
+	)
 </script>

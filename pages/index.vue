@@ -1,5 +1,5 @@
 <template>
-	<div>Hello from the main page</div>
+	<ContentDoc path="/"/>
 </template>
 
 <script setup>

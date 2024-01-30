@@ -1,6 +1,5 @@
 ---
 description: "List of my blog posts"
-publishedAt: 2022-06-12 17:12:00
 ---
 
 # Blog Posts

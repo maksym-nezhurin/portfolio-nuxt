@@ -1,6 +1,8 @@
 ---
 title: "Title of the page"
 description: "meta description of the page"
+publishedAt: 2023-07-12 17:12:00
+toc: true
 ---
 
 # Sample Markdown Document
