@@ -23,6 +23,7 @@
 <script setup>
 	const activeId = ref(null);
 	onMounted(() => {
+    console.log('mounted')
 		setTimeout(() => {
 			const callback = (entries) => {
 			for (const entry of entries) {

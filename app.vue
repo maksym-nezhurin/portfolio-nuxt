@@ -2,7 +2,7 @@
   <div>
     <NuxtLayout :name="layout">
       <button @click="changeLayout">{{ nextLayout }}</button>
-     <NuxtPage />
+      <NuxtPage />
     </NuxtLayout>
   </div>
 </template>
