@@ -1,6 +1,6 @@
 <template>
 	<nav>
-		<ul class="flex space-x-4">
+		<ul class="flex flex-col md:flex-row md:space-x-4">
 			<li>
 				<NuxtLink href="/" class="link" >
 					Main

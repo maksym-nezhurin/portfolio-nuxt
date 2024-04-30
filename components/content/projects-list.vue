@@ -5,7 +5,7 @@
 		<section v-else>Here we display the data
 			<ul class="grid grid-cols-1 gap-4">
 				<li v-for="repository in repos" :key="repository.id"
-				class="border border-gray-200 rounded-sm p-4 hover:bg-gray-100 rounded-sm p-4">
+				class="border border-gray-200 rounded-sm hover:bg-gray-100 p-4">
 					<a :href="repository.html_url" target="_blank" class="flex justify-between text-sm">
 						<div class="font-semibold">
 							{{ repository.name }}

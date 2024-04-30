@@ -1,13 +1,24 @@
 <template>
   <div>
     <NuxtLayout :name="layout">
+      <button @click="changeLayout">{{ nextLayout }}</button>
      <NuxtPage />
     </NuxtLayout>
   </div>
 </template>
 
 <script setup>
-  const layout = 'default';
+  const layouts = {
+    default: 'default',
+    another: 'another'
+  }
+  const layout = ref(layouts.default);
+  const nextLayout = computed(() => layout.value === layouts.default ? layouts.another : layouts.default);
+
+  const changeLayout = () => {
+    layout.value = layout.value === layouts.default ? layouts.another : layouts.default;
+  }
+
 </script>
 
 <style>

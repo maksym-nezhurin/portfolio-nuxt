@@ -6,8 +6,8 @@
 		</div>
 	<ul>
 		<li v-for="post in posts" :key="post._path">
-			<NuxtLink :to="post._path" class="column hover:bg-gray-800">
-				<div :class="{'text-white dark:text-gray-900': !post.displayYear, 'text-gray-400 dark:text-gray-500': post.displayYear }">{{ post.year }}</div>
+			<NuxtLink :to="post._path" class="column group hover:bg-stone-200 dark:hover:bg-gray-800">
+				<div :class="{'text-white group-hover:text-gray-100 dark:text-gray-900 dark:group-hove:text-gray-800': !post.displayYear, 'text-gray-400 dark:text-gray-500': post.displayYear }">{{ post.year }}</div>
 				<div>{{ post.title }}</div>
 			</NuxtLink>
 		</li>

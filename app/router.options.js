@@ -5,7 +5,6 @@ export default {
 	}
 
 	if(to.hash) {
-		console.log('here', to.hash);
 		return {
 			el: to.hash,
 			behavior: 'smooth',
